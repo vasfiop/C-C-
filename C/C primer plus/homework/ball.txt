@@ -1,0 +1,15 @@
+1 wen lvqiang 6 1 2 3
+2 zhang dianhua 8 4 1 2
+3 ren youpeng 9 6 5 8
+4 Jessie Joybat 5 2 1 1
+5 ding zhenyang 9 3 5 8
+6 pang jiayi 8 2 5 3
+7 xin minghaohao 7 5 4 3
+8 ma shijie 9 7 5 3
+9 shang yunjie 10 8 5 4
+10 wu shuo 99 1 7 6
+11 yang zhending 12 3 6 7
+12 zhang ruikang 98 12 45 4
+13 sun weirui 123 47 87 72 
+14 zhu jia 87 46 31 12
+15 jia yipang 58 32 3 8

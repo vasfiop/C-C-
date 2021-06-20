@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1568705002 source:c:\users\dell\desktop\usehotel\hotel.c
+	<stdio.h>
+	"hotel.h"
+
+1568704731 c:\users\dell\desktop\usehotel\hotel.h
+
+1568704833 source:c:\users\dell\desktop\usehotel\usehotel.c
+	<stdio.h>
+	"hotel.h"
+
+1568705267 source:c:\users\dell\desktop\c\9.9项目\hotel.c
+	<stdio.h>
+	"hotel.h"
+
+1568704731 c:\users\dell\desktop\c\9.9项目\hotel.h
+
+1568704833 source:c:\users\dell\desktop\c\9.9项目\usehotel.c
+	<stdio.h>
+	"hotel.h"
+

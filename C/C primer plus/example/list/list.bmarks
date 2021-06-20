@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<BrowseTracker_layout_file>
+	<ActiveTarget name="Release" />
+	<File name="list.h" open="1" top="0" tabpos="1">
+		<Cursor position="191" topLine="0" />
+		<BrowseMarks positions="" />
+	</File>
+	<File name="list.c" open="1" top="0" tabpos="2">
+		<Cursor position="305" topLine="0" />
+		<BrowseMarks positions="" />
+	</File>
+	<File name="films.c" open="1" top="1" tabpos="3">
+		<Cursor position="754" topLine="18" />
+		<BrowseMarks positions="" />
+	</File>
+</BrowseTracker_layout_file>

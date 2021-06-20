@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1574075499 source:c:\users\dell\desktop\12-2\pe12-2a.c
+	<stdio.h>
+	"pe12-2a.h"
+
+1574075064 c:\users\dell\desktop\12-2\pe12-2a.h
+
+1574072616 source:c:\users\dell\desktop\12-2\pe12-2b.c
+	<stdio.h>
+	"pe12-2a.h"
+

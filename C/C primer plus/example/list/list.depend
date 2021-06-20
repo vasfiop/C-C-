@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1604067112 source:c:\users\dell\desktop\c\example\list\list.c
+	<stdio.h>
+	<stdlib.h>
+	"list.h"
+
+1604066207 c:\users\dell\desktop\c\example\list\list.h
+	<stdbool.h>
+
+1604067177 source:c:\users\dell\desktop\c\example\list\films.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"list.h"
+

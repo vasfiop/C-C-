@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1573616902 source:c:\users\dell\desktop\c\骰子项目\diceroll.c
+	"diceroll.h"
+	<stdio.h>
+	<stdlib.h>
+
+1573617036 c:\users\dell\desktop\c\骰子项目\diceroll.h
+
+1573617041 source:c:\users\dell\desktop\c\骰子项目\mandydice.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"diceroll.h"
+
+1573616902 source:c:\users\dell\desktop\c\example\骰子项目\diceroll.c
+	"diceroll.h"
+	<stdio.h>
+	<stdlib.h>
+
+1573617036 c:\users\dell\desktop\c\example\骰子项目\diceroll.h
+
+1573617041 source:c:\users\dell\desktop\c\example\骰子项目\mandydice.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"diceroll.h"
+
