@@ -13,3 +13,5 @@
     * 随机数 `Random number`
     * 模拟原神抽卡算法 `Withdrawal card`
 5. OpenGL
+    * MinGW 9.2.0
+    * GLFW 3.3.4
