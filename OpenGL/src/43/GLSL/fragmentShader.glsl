@@ -1,7 +1,8 @@
 #version 430
-in vec4 varyingcolor;
+in vec4 vartingColor;
 out vec4 color;
+
 uniform mat4 proj_matrix;
 void main() {
-    color = varyingcolor;
+    color = vartingColor;
 }

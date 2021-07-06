@@ -26,11 +26,11 @@ namespace Utils
         std::ifstream fileStream(filepath, std::ios::in);
         if (fileStream.fail())
         {
-            std::cout << "ERROR::FILE::ä¸èƒ½æ‰“å¼€æ–‡ä»¶ï¼::" << filepath << std::endl;
+            std::cout << "ERROR::FILE::ÎÄ¼þ´ò¿ªÊ§°Ü::" << filepath << std::endl;
             exit(EXIT_FAILURE);
         }
         else
-            std::cout << "SUCCESS::FILE::æ–‡ä»¶æ‰“å¼€æ“ä½œæˆåŠŸ!" << std::endl;
+            std::cout << "SUCCESS::FILE::ÎÄ¼þ´ò¿ª³É¹¦!" << std::endl;
         std::string line = "";
         while (!fileStream.eof())
         {
@@ -74,7 +74,7 @@ namespace Utils
             std::cout << "ERROR::SHADER::" << infoLog << std::endl;
         }
         else
-            std::cout << "SUCCESS::SHADER::é¡¶ç‚¹ç€è‰²å™¨åˆå§‹åŒ–" << std::endl;
+            std::cout << "SUCCESS::SHADER::¶¥µã×ÅÉ«Æ÷±àÒë³É¹¦" << std::endl;
 
         GLuint fShader = glCreateShader(GL_FRAGMENT_SHADER);
         glShaderSource(fShader, 1, &fshaderSource, NULL);
@@ -87,7 +87,7 @@ namespace Utils
             std::cout << "ERROR::SHADER::" << infoLog << std::endl;
         }
         else
-            std::cout << "SUCCESS::SHADER::ç‰‡æ®µç€è‰²å™¨åˆå§‹åŒ–" << std::endl;
+            std::cout << "SUCCESS::SHADER::Æ¬¶Î×ÅÉ«Æ÷±àÒë³É¹¦" << std::endl;
 
         GLuint vfProgram = glCreateProgram();
         glAttachShader(vfProgram, vShader);
@@ -100,7 +100,7 @@ namespace Utils
             std::cout << "ERROR::SHADER::" << infoLog << std::endl;
         }
         else
-            std::cout << "SUCCESS::SHADER::é“¾æŽ¥ç€è‰²å™¨ç¨‹åºæˆåŠŸ" << std::endl;
+            std::cout << "SUCCESS::SHADER::×ÅÉ«Æ÷Á¬½Ó³ÌÐò³É¹¦" << std::endl;
 
         return vfProgram;
     }

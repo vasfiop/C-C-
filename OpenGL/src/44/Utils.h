@@ -1,26 +1,41 @@
-#include <GL\glew.h>
-#include <GLFW\glfw3.h>
+// 下面是OpenGL专属头文件
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+// 下面是c/c++头文件
 #include <string>
 #include <iostream>
 #include <fstream>
 #include <cmath>
-#include <glm/glm.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include <glm/gtc/matrix_transform.hpp>
 #include <windows.h>
+#include <cstdlib>
+#include <stack>
+#include <ctime>
 
-#define _FILE_NAME_ "43"
+#define _FILE_NAME_ "44"     // 文件包名
+#define _VERSION_NUMBER_ 1.3 // 工具包的版本号
 
 namespace Utils
 {
+    // 键盘监听函数
     void processInput(GLFWwindow *window)
     {
         if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         {
-            std::cout << "OPERATION::KEYBOARD::你按下了 esc" << std::endl;
+            std::cout << "OPERATION::KEYBOARD::你按下了ESC" << std::endl;
             glfwSetWindowShouldClose(window, true);
         }
+        if (glfwGetKey(window, GLFW_KEY_BACKSPACE) == GLFW_PRESS)
+        {
+            std::cout << "OPERATION::KEYBOARD::你按下了空格" << std::endl;
+            std::cout << "STOP::程序已暂停" << std::endl;
+            system("pause");
+            std::cout << "START::程序正在渲染..." << std::endl;
+        }
     }
+    // 读取GLSL文件函数
     std::string readShaderSource(const char *filepath)
     {
         std::string content;
@@ -41,6 +56,7 @@ namespace Utils
         fileStream.close();
         return content;
     }
+    // 检查OpenGL错误
     bool checkOpenGLError()
     {
         bool foundError = false;
@@ -54,6 +70,7 @@ namespace Utils
 
         return foundError;
     }
+    // 着色器初始化
     GLuint createShaderProgram()
     {
         GLint success;
@@ -61,6 +78,7 @@ namespace Utils
 
         std::string vertShaderStr = readShaderSource("../src/" _FILE_NAME_ "/GLSL/vertShader.glsl");
         std::string fragmentShaderStr = readShaderSource("../src/" _FILE_NAME_ "/GLSL/fragmentShader.glsl");
+
         const char *vshaderSource = vertShaderStr.c_str();
         const char *fshaderSource = fragmentShaderStr.c_str();
 

@@ -16,7 +16,7 @@ namespace Utils
     {
         if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         {
-            std::cout << "OPERATION::KEYBOARD::you put esc" << std::endl;
+            std::cout << "OPERATION::KEYBOARD::你按下了 esc" << std::endl;
             glfwSetWindowShouldClose(window, true);
         }
     }
@@ -100,7 +100,7 @@ namespace Utils
             std::cout << "ERROR::SHADER::" << infoLog << std::endl;
         }
         else
-            std::cout << "SUCCESS::SHADER::链接着色器程序成功" << std::endl;
+            std::cout << "SUCCESS::SHADER::链接着色器程序" << std::endl;
 
         return vfProgram;
     }

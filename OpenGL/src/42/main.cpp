@@ -9,11 +9,11 @@ GLuint renderingProgram;
 GLuint vao[numVAOs];
 GLuint vbo[numVBOs];
 
-GLuint mvLoc, projLoc;
+GLuint mLoc, projLoc, tfLoc, vLoc;
 int width, height;
 float aspect;
 
-glm::mat4 pMat, vMat, mMat, mvMat, tMat, rMat;
+glm::mat4 pMat, vMat, mMat, tMat, rMat;
 
 void setupVertice();
 void init(GLFWwindow *window);
@@ -30,16 +30,16 @@ int main()
         std::cout << "SUCCESS::INIT::GLFW 初始化" << std::endl;
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    // 锟斤拷锟矫达拷锟节伙拷锟斤拷锟斤拷息
-    GLFWwindow *window = glfwCreateWindow(800, 600, _FILE_NAME_, NULL, NULL);
+
+    GLFWwindow *window = glfwCreateWindow(1600, 1200, _FILE_NAME_, NULL, NULL);
     if (window == NULL)
     {
-        std::cout << "ERROR::CREATE::window 创建失败" << std::endl;
+        std::cout << "ERROR::CREATE::window 初始化" << std::endl;
         glfwTerminate();
         return -1;
     }
     else
-        std::cout << "SUCCESS::CREATE::window 创建成功" << std::endl;
+        std::cout << "SUCCESS::CREATE::window 初始化" << std::endl;
     glfwMakeContextCurrent(window);
     if (glewInit() != GLEW_OK)
     {
@@ -69,7 +69,8 @@ void display(GLFWwindow *window, double currentTime)
     glClear(GL_COLOR_BUFFER_BIT);
     glUseProgram(renderingProgram);
 
-    mvLoc = glGetUniformLocation(renderingProgram, "mv_matrix");
+    mLoc = glGetUniformLocation(renderingProgram, "m_matrix");
+    vLoc = glGetUniformLocation(renderingProgram, "v_matrix");
     projLoc = glGetUniformLocation(renderingProgram, "proj_matrix");
 
     glfwGetFramebufferSize(window, &width, &height);
@@ -83,9 +84,14 @@ void display(GLFWwindow *window, double currentTime)
     mMat = tMat * rMat;
 
     vMat = glm::translate(glm::mat4(1.0), glm::vec3(-cameraX, -cameraY, -cameraZ));
-    mvMat = vMat * mMat;
 
-    glUniformMatrix4fv(mvLoc, 1, GL_FALSE, glm::value_ptr(mvMat));
+    tfLoc = glGetUniformLocation(renderingProgram, "tf");
+    glUniform1f(tfLoc, (float)currentTime);
+    // BUG!!! 渲染出来的方块不太对劲
+    // 1 转的太快了
+    // 2 很分散
+    glUniformMatrix4fv(mLoc, 1, GL_FALSE, glm::value_ptr(mMat));
+    glUniformMatrix4fv(vLoc, 1, GL_FALSE, glm::value_ptr(vMat));
     glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(pMat));
 
     glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
@@ -94,14 +100,14 @@ void display(GLFWwindow *window, double currentTime)
 
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
-    glDrawArrays(GL_TRIANGLES, 0, 36);
+    glDrawArraysInstanced(GL_TRIANGLES, 0, 36, 1000);
 }
 void init(GLFWwindow *window)
 {
     renderingProgram = Utils::createShaderProgram();
     cameraX = 0;
     cameraY = 0;
-    cameraZ = 8;
+    cameraZ = 420;
 
     cubLocX = 0;
     cubLocY = -2;

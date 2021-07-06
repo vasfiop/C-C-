@@ -12,7 +12,7 @@
                 "command": "powershell",
                 "args": [
                     "-c",
-                    "make dir=01_draw_test"
+                    "make dir=44"
                 ]
             }
         },
