@@ -19,6 +19,7 @@ glm::mat4 pMat, vMat, mMat, mvMat;
 void setupVertice();
 void init(GLFWwindow *window);
 void display(GLFWwindow *window, double currentTime);
+void window_reshape_callback(GLFWwindow *window, int newWidth, int newHeight);
 
 int main()
 {
@@ -51,10 +52,12 @@ int main()
         std::cout << "SUCCESS::INIT::GLEW 初始化" << std::endl;
     init(window);
 
-    int count_out = 1;
-    int count = 0;
-    clock_t start_time;
-    clock_t end_time;
+    glfwSetWindowSizeCallback(window, window_reshape_callback);
+
+    int count_out = 1;  // 信号量占位
+    int count = 0;      // 记录渲染次数
+    clock_t start_time; // 渲染开始时间
+    clock_t end_time;   // 选软结束时间
 
     start_time = clock();
     while (!glfwWindowShouldClose(window))
@@ -72,6 +75,7 @@ int main()
 
         glfwSwapBuffers(window);
         glfwPollEvents();
+
         count_out = 2;
         count++;
     }
@@ -93,12 +97,11 @@ void display(GLFWwindow *window, double currentTime)
     glClear(GL_COLOR_BUFFER_BIT);
     glUseProgram(renderingProgram);
 
+    glEnable(GL_CULL_FACE);
+
     mvLoc = glGetUniformLocation(renderingProgram, "mv_matrix");
     projLoc = glGetUniformLocation(renderingProgram, "proj_matrix");
 
-    glfwGetFramebufferSize(window, &width, &height);
-    aspect = (float)width / (float)height;
-    pMat = glm::perspective(1.0472f, aspect, 0.1f, 1000.0f);
     // 透视矩阵
     glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(pMat));
     // 将视图矩阵推入堆栈
@@ -115,7 +118,8 @@ void display(GLFWwindow *window, double currentTime)
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(0);
     glEnable(GL_DEPTH_TEST);
-    // glEnable(GL_LEQUAL);
+    glDepthFunc(GL_LEQUAL);
+    glFrontFace(GL_CCW); // 金字塔顶点缠绕顺序为逆时针方向
     glDrawArrays(GL_TRIANGLES, 0, 18);
     mvStack.pop();
 
@@ -129,6 +133,9 @@ void display(GLFWwindow *window, double currentTime)
     glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(0);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+    glFrontFace(GL_CW); //立方体顶点的缠绕顺序为顺时针方向
     glDrawArrays(GL_TRIANGLES, 0, 36);
     mvStack.pop();
 
@@ -142,6 +149,9 @@ void display(GLFWwindow *window, double currentTime)
     glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(0);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+    glFrontFace(GL_CW);
     glDrawArrays(GL_TRIANGLES, 0, 36);
 
     mvStack.pop();
@@ -157,6 +167,10 @@ void init(GLFWwindow *window)
     cameraZ = 12;
 
     setupVertice();
+
+    glfwGetFramebufferSize(window, &width, &height);
+    aspect = (float)width / (float)height;
+    pMat = glm::perspective(1.0472f, aspect, 0.1f, 1000.0f);
 }
 void setupVertice()
 {
@@ -191,4 +205,10 @@ void setupVertice()
 
     glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
     glBufferData(GL_ARRAY_BUFFER, sizeof(pyramidPositions), pyramidPositions, GL_STATIC_DRAW);
+}
+void window_reshape_callback(GLFWwindow *window, int newWidth, int newHeight)
+{
+    aspect = (float)newWidth / (float)newHeight;
+    glViewport(0, 0, newWidth, newHeight);
+    pMat = glm::perspective(1.0472f, aspect, 0.1f, 1000.0f);
 }

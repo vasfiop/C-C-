@@ -27,6 +27,7 @@ INCLUDE	:= include
 # define lib directory
 LIB		:= lib
 Libraries := -lglfw3dll -lopengl32 -lglew32
+PROJECTS := soil2-static-lib soil2-shared-lib soil2-test soil2-perf-test
 
 ifeq ($(OS),Windows_NT)
 MAIN	:= main.exe
@@ -91,3 +92,97 @@ clean:
 run: all
 	./$(OUTPUTMAIN)
 	@echo Executing 'run: all' complete!
+
+# 下面是SOIL2的makefile
+
+# ifndef config
+#   config=debug_x86_64
+# endif
+
+# ifndef verbose
+#   SILENT = @
+# endif
+
+# ifeq ($(config),debug_x86_64)
+#   soil2_static_lib_config = debug_x86_64
+#   soil2_shared_lib_config = debug_x86_64
+#   soil2_test_config = debug_x86_64
+#   soil2_perf_test_config = debug_x86_64
+
+# else ifeq ($(config),debug_x86)
+#   soil2_static_lib_config = debug_x86
+#   soil2_shared_lib_config = debug_x86
+#   soil2_test_config = debug_x86
+#   soil2_perf_test_config = debug_x86
+
+# else ifeq ($(config),release_x86_64)
+#   soil2_static_lib_config = release_x86_64
+#   soil2_shared_lib_config = release_x86_64
+#   soil2_test_config = release_x86_64
+#   soil2_perf_test_config = release_x86_64
+
+# else ifeq ($(config),release_x86)
+#   soil2_static_lib_config = release_x86
+#   soil2_shared_lib_config = release_x86
+#   soil2_test_config = release_x86
+#   soil2_perf_test_config = release_x86
+
+# else
+#   $(error "invalid configuration $(config)")
+# endif
+
+# PROJECTS := soil2-static-lib soil2-shared-lib soil2-test soil2-perf-test
+
+# .PHONY: all clean help $(PROJECTS) 
+
+# all: $(PROJECTS)
+
+# soil2-static-lib:
+# ifneq (,$(soil2_static_lib_config))
+# 	@echo "==== Building soil2-static-lib ($(soil2_static_lib_config)) ===="
+# 	@echo "这一行是make${MAKE}"
+# 	@${MAKE} --no-print-directory -C . -f soil2-static-lib.make config=$(soil2_static_lib_config)
+# endif
+
+# soil2-shared-lib:
+# ifneq (,$(soil2_shared_lib_config))
+# 	@echo "==== Building soil2-shared-lib ($(soil2_shared_lib_config)) ===="
+# 	@${MAKE} --no-print-directory -C . -f soil2-shared-lib.make config=$(soil2_shared_lib_config)
+# endif
+
+# soil2-test: soil2-static-lib
+# ifneq (,$(soil2_test_config))
+# 	@echo "==== Building soil2-test ($(soil2_test_config)) ===="
+# 	@${MAKE} --no-print-directory -C . -f soil2-test.make config=$(soil2_test_config)
+# endif
+
+# soil2-perf-test: soil2-static-lib
+# ifneq (,$(soil2_perf_test_config))
+# 	@echo "==== Building soil2-perf-test ($(soil2_perf_test_config)) ===="
+# 	@${MAKE} --no-print-directory -C . -f soil2-perf-test.make config=$(soil2_perf_test_config)
+# endif
+
+# clean:
+# 	@${MAKE} --no-print-directory -C . -f soil2-static-lib.make clean
+# 	@${MAKE} --no-print-directory -C . -f soil2-shared-lib.make clean
+# 	@${MAKE} --no-print-directory -C . -f soil2-test.make clean
+# 	@${MAKE} --no-print-directory -C . -f soil2-perf-test.make clean
+
+# help:
+# 	@echo "Usage: make [config=name] [target]"
+# 	@echo ""
+# 	@echo "CONFIGURATIONS:"
+# 	@echo "  debug_x86_64"
+# 	@echo "  debug_x86"
+# 	@echo "  release_x86_64"
+# 	@echo "  release_x86"
+# 	@echo ""
+# 	@echo "TARGETS:"
+# 	@echo "   all (default)"
+# 	@echo "   clean"
+# 	@echo "   soil2-static-lib"
+# 	@echo "   soil2-shared-lib"
+# 	@echo "   soil2-test"
+# 	@echo "   soil2-perf-test"
+# 	@echo ""
+# 	@echo "For more information, see https://github.com/premake/premake-core/wiki"
