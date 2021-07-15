@@ -26,8 +26,8 @@ INCLUDE	:= include
 
 # define lib directory
 LIB		:= lib
-Libraries := -lglfw3dll -lopengl32 -lglew32
-PROJECTS := soil2-static-lib soil2-shared-lib soil2-test soil2-perf-test
+Libraries := -lglfw3dll -lopengl32 -lglew32 
+# -lsoil2-debug
 
 ifeq ($(OS),Windows_NT)
 MAIN	:= main.exe
@@ -74,7 +74,7 @@ $(OUTPUT):
 	$(MD) $(OUTPUT)
 
 $(MAIN): $(OBJECTS) 
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -o $(OUTPUTMAIN) $(OBJECTS) $(LFLAGS) $(LIBS) $(Libraries)
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -o $(OUTPUTMAIN) $(OBJECTS) $(LFLAGS) $(LIBS) $(Libraries) 
 
 # this is a suffix replacement rule for building .o's from .c's
 # it uses automatic variables $<: the name of the prerequisite of

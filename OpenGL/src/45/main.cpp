@@ -5,6 +5,7 @@
 
 float cameraX, cameraY, cameraZ; // ÊÔÍ¼¾ØÕó
 GLuint renderingProgram;
+GLuint brickTexture;
 GLuint vao[numVAOs];
 GLuint vbo[numVBOs];
 
@@ -107,7 +108,7 @@ void display(GLFWwindow *window, double currentTime)
     // ½«ÊÓÍ¼¾ØÕóÍÆÈë¶ÑÕ»
     vMat = glm::translate(glm::mat4(1), glm::vec3(-cameraX, -cameraY, -cameraZ));
     mvStack.push(vMat);
-    
+
     // ½ð×ÖËþ == Ì«Ñô
     mvStack.push(mvStack.top());
     mvStack.top() *= glm::translate(glm::mat4(1), glm::vec3(0, 0, 0)); // Ì«ÑôÎ»ÖÃ
@@ -197,15 +198,23 @@ void setupVertice()
         -1.0, -1.0, -1.0, 1.0, -1.0, 1.0, -1.0, -1.0, 1.0,
         1.0, -1.0, 1.0, -1.0, -1.0, -1.0, 1.0, -1.0, -1.0};
 
+    float pyrTexCoords[36] = {
+        0.0, 0.0, 1.0, 0.0, 0.5, 1.0,
+        0.0, 0.0, 1.0, 0.0, 0.5, 1.0,
+        0.0, 0.0, 1.0, 0.0, 0.5, 1.0,
+        0.0, 0.0, 1.0, 0.0, 0.5, 1.0,
+        0.0, 0.0, 1.0, 1.0, 0.0, 1.0,
+        1.0, 1.0, 0.0, 0.0, 1.0, 0.0};
+
     glGenVertexArrays(numVAOs, vao);
     glBindVertexArray(vao[0]);
     glGenBuffers(numVBOs, vbo);
 
     glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(cubePositions), cubePositions, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(pyramidPositions), pyramidPositions, GL_STATIC_DRAW);
 
     glBindBuffer(GL_ARRAY_BUFFER, vbo[1]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(pyramidPositions), pyramidPositions, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(pyrTexCoords), pyrTexCoords, GL_STATIC_DRAW);
 }
 void window_reshape_callback(GLFWwindow *window, int newWidth, int newHeight)
 {
