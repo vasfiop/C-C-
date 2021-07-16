@@ -1,7 +1,34 @@
+#ifndef _RESOURCE_H_
+#define _RESOURCE_H_ 1
+
 #include <iostream>
-#include <cstring>
+#include <fstream>
+#include <string>
 
-#define MAXNUM 1000   // æ•°ç‹¬æ¸¸æˆçš„ä¸ªæ•°
-#define SEED 20171212 // ç”¨äºéšæœºæ•°ç”Ÿæˆçš„ç§å­
+#define MAXNUM 1000                 // Êı¶ÀÓÎÏ·µÄ¸öÊı
+#define SEED 20171212               // ÓÃÓÚËæ»úÊıÉú³ÉµÄÖÖ×Ó
+#define LINECOUNT 9                 // ÆåÅÌ´óĞ¡
+#define BUILD_FILE_NAME "¿â.txt"    // ´ğ°¸µÄÈÕÖ¾
+#define CHECKER_FILE_NAME "Ìâ.txt"  // Éú³ÉÍê±ÏµÄÌâ
+#define ANSWER_FILE_NAME "½á¹û.txt" // ½á¹ûÈÕÖ¾
+#define DIFFICULTY 40               // ÄÑ¶È(´ò¶´ÊıÁ¿£¬»áÓĞ5%µÄ²¨¶¯)
 
-using namespace std;
+extern int checker_board[LINECOUNT][LINECOUNT]; // ÆåÅÌ
+extern int random_array[LINECOUNT];             // Ëæ»úº¯ÊıÊı×é
+
+void Board_Init_();                            // ÆåÅÌ³õÊ¼»¯
+void Random_Array_Init();                      // Ëæ»úº¯ÊıÊı×é³õÊ¼»¯
+void MyPrint();                                // ´òÓ¡ÆåÅÌ
+void randomFirstRow(int *a0);                  // Ëæ»úÉú³ÉµÚÒ»ĞĞ
+bool Digit(int i, int j);                      //Ìî³äÊı×Ö
+bool CheckNumber(int i, int j);                // ¼ì²éÊı×ÖÊÇ·ñ·ûºÏµ±Ç°Î»ÖÃ
+bool CheckSudoku(int i, int j, int number);    // ¼ì²éµ±Ç°Õâ¸öÊı×ÖÊÇ·ñ·ûºÏÊı¶À¹æÔò
+void FileInput(char *filename, int count);     // ½«µ±Ç°ÆåÅÌÒÑÊı×éµÄĞÎÊ½Â¼Èëµ½ÎÄ¼şÖĞ
+void FileInit(char *filename);                 // ÎÄ¼ş³õÊ¼»¯
+void BuildCheckerBoard();                      // ¹¹½¨ÆåÅÌ
+int GetDifficultyNumber();                     // Ëæ»ú³öÄÑ¶ÈÊıÁ¿
+void Get_Checker_By_File(std::ifstream &file); // ´ÓÎÄ¼ş¶ÁÈ¡ÆåÅÌ
+bool Answer_Checker(int i, int j);             // ÆÆ½â
+bool Get_Checker_Zero(int *i, int *j);         // ¶ÁÈ¡ÆåÅÌµÄ0¶¨Î»
+
+#endif

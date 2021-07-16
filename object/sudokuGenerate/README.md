@@ -13,6 +13,7 @@
 主要变量：
 * #define MAXNUM 1000   /*数独游戏个数*/ 
 * #define SEED 20171212 /*用于随机数生成的种子*/ 
+
 # 模拟学生端程序(sudokuStudentEnd.cpp)
 
 函数简介：
@@ -30,3 +31,6 @@
 * 包含1000道数独问题的名为sudoku的文件夹。
 * sudokuStudentEnd_toBeSolved.cpp文件（学生需要补充readFromFile函数读取文件，补充solveSudoku函数求解数独问题）。
 
+项目完成时间2021-7-16 13:45  
+生成时间 0~1毫秒  
+计算时间 0~1毫秒  
