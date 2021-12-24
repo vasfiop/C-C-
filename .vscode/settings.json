@@ -1,0 +1,22 @@
+{
+    "C_Cpp.dimInactiveRegions": false,
+    "java.configuration.maven.userSettings": "‪D:\\maven-3.8.1\\conf\\settings.xml",
+    "files.associations": {
+        "ostream": "cpp",
+        "random": "cpp",
+        "cmath": "cpp",
+        "iostream": "cpp",
+        "array": "c",
+        "functional": "c",
+        "istream": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "utility": "c",
+        "string": "c",
+        "fstream": "c",
+        "new": "c",
+        "sstream": "c",
+        "typeinfo": "c",
+        "stdio.h": "c"
+    },
+}

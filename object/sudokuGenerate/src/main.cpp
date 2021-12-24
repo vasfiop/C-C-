@@ -26,7 +26,6 @@ int main()
 		FileInput(CHECKER_FILE_NAME, i + 1);
 	}
 	finish_time = time(NULL);
-
 	std::cout << "生成完毕,已生成日志" << BUILD_FILE_NAME << "和" << CHECKER_FILE_NAME << std::endl;
 	std::cout << "共耗费" << (finish_time - start_time) << "毫秒" << std::endl;
 
@@ -34,7 +33,6 @@ int main()
 	start_time = time(NULL);
 	std::ifstream file;
 	file.open(CHECKER_FILE_NAME, std::ios::in);
-
 	for (int i = 0; i < MAXNUM; i++)
 	{
 		Get_Checker_By_File(file);
@@ -44,10 +42,8 @@ int main()
 		Answer_Checker(x, y);
 		FileInput(ANSWER_FILE_NAME, i + 1);
 	}
-
 	file.close();
 	finish_time = time(NULL);
-
 	std::cout << "计算完毕，已生成日志" << ANSWER_FILE_NAME << std::endl;
 	std::cout << "共耗费" << (finish_time - start_time) << "毫秒" << std::endl;
 
