@@ -1,39 +1,83 @@
 #include <iostream>
-using namespace std;
-class a
+
+class Time
 {
 private:
-    int num;
+    int hours;
+    int minutes;
 
 public:
-    a();
-    ~a();
+    Time();
+    Time(int h, int m = 0);
+    void AddMin(int m);
+    void AddHr(int h);
+    void Reset(int h = 0, int m = 0);
+    Time Sum(const Time &t) const;
+    void Show() const;
 };
-
-a get();
 
 int main(int argc, char const *argv[])
 {
+    Time Plainning;
+    Time coding(2, 40);
+    Time fixing(5, 55);
+    Time total;
 
-    a a2;
+    using namespace std;
 
-    a2 = get();
-    
+    cout << "planning time = ";
+    Plainning.Show();
+    cout << endl;
+
+    cout << "coding time = ";
+    coding.Show();
+    cout << endl;
+
+    cout << "fixing time = ";
+    fixing.Show();
+    cout << endl;
+
+    total = coding.Sum(fixing);
+    cout << "coding.Sum(fixing) = ";
+    total.Show();
+    cout << endl;
+
     return 0;
 }
 
-a get()
+Time::Time()
 {
-    a a1;
-
-    return a1;
+    hours = minutes = 0;
 }
-a::a()
+Time::Time(int h, int m)
 {
-    printf("This is create\n");
+    hours = h;
+    minutes = m;
 }
-
-a::~a()
+void Time::AddMin(int m)
 {
-    printf("This is dis\n");
+    minutes += m;
+    hours += minutes / 60;
+    minutes %= 60;
+}
+void Time::AddHr(int h)
+{
+    hours += h;
+}
+void Time::Reset(int h, int m)
+{
+    hours = h;
+    minutes = m;
+}
+Time Time::Sum(const Time &t) const
+{
+    Time sum;
+    sum.minutes = minutes + t.minutes;
+    sum.hours = hours + t.hours + sum.minutes / 60;
+    sum.minutes %= 60;
+    return sum;
+}
+void Time::Show() const
+{
+    std::cout << hours << " hours, " << minutes << " minutes";
 }
