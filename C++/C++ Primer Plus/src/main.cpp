@@ -5,38 +5,17 @@ int main(int argc, char const *argv[])
 {
     using namespace std;
 
-    Time planning;
-    Time coding(2, 40);
-    Time fixing(5, 55);
-    Time total;
+    Time aida(3, 35);
+    Time tosca(2, 48);
+    Time temp;
 
-    cout << "planning time = ";
-    planning.Show();
-    cout << endl;
-
-    cout << "coding time = ";
-    coding.Show();
-    cout << endl;
-
-    cout << "fixing time = ";
-    fixing.Show();
-    cout << endl;
-
-    total = coding + fixing;
-    cout << "coding + fixing = ";
-    total.Show();
-    cout << endl;
-
-    Time morefixing(3, 28);
-    cout << "more fixing time = ";
-    morefixing.Show();
-    cout << endl;
-
-    // total = morefixing.operator+(total);
-    total = morefixing+total;
-    cout << "morefixing.operator+(total) = ";
-    total.Show();
-    cout << endl;
+    cout << "Aida and Tosca:\n";
+    cout << aida << "; " << tosca << endl;
+    temp = aida + tosca;
+    cout << "Aida + Tosca: " << temp << endl;
+    temp = aida * 1.17;
+    cout << "Aida * 1.17: ";
+    cout << "10.0 * Tosca: " << 10.0 * tosca << endl;
 
     return 0;
 }

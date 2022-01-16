@@ -18,14 +18,16 @@ LFLAGS =
 OUTPUT	:= output
 
 # define source directory
-SRC		:= src/$(dir) #// ä¼ é€’ var å˜é‡å®šä¹‰æ‰§è¡Œæ–‡ä»¶ç›®å½•
-CLEAN_SRC		:= src\$(dir)\*.o #// åˆ é™¤æ‰€æœ‰.oæ–‡ä»¶
+SRC		:= src/$(dir) #// ´«µİ var ±äÁ¿¶¨ÒåÖ´ĞĞÎÄ¼şÄ¿Â¼
+CLEAN_SRC		:= src\$(dir)\*.o #// É¾³ıËùÓĞ.oÎÄ¼ş
 
 # define include directory
 INCLUDE	:= include
 
 # define lib directory
 LIB		:= lib
+
+
 
 ifeq ($(OS),Windows_NT)
 MAIN	:= main.exe
@@ -66,7 +68,7 @@ OBJECTS		:= $(SOURCES:.cpp=.o)
 OUTPUTMAIN	:= $(call FIXPATH,$(OUTPUT)/$(MAIN))
 
 all: $(OUTPUT) $(MAIN)
-	@echo Executing 'all' complete!
+	@echo run start!
 
 $(OUTPUT):
 	$(MD) $(OUTPUT)
@@ -89,4 +91,4 @@ clean:
 
 run: all
 	./$(OUTPUTMAIN)
-	@echo Executing 'run: all' complete!
+	@echo run complete!
