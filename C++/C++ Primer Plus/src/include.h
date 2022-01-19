@@ -1,26 +1,19 @@
 #ifndef _INCLUDE_H_
 #define _INCLUDE_H_
 
-class Time
+class Number
 {
 private:
-    int hours;
-    int minutes;
+    int a;
+    int b;
 
 public:
-    Time();
-    Time(int h, int m = 0);
-    void AddMin(int m);
-    void AddHr(int h);
-    void Reset(int h = 0, int m = 0);
-    Time operator+(const Time &t) const;
-    Time operator-(const Time &t) const;
-    Time operator*(double n) const;
-    friend Time operator*(double m, const Time &t)
-    {
-        return t * m;
-    }
-    friend std::ostream &operator<<(std::ostream &os, const Time &t);
+    Number();
+    Number(int a, int b);
+    Number operator+(const Number &a) const;
+    Number operator+(const int a) const;
+    friend std::ostream &operator<<(std::ostream &os, Number &n);
+    // std::ostream &operator<<(std::ostream os);
 };
 
 #endif

@@ -1,21 +1,13 @@
 #include <iostream>
 #include "include.h"
-
 int main(int argc, char const *argv[])
 {
-    using namespace std;
+    Number n1(1, 1);
+    Number n2(1, 1);
+    Number n3;
 
-    Time aida(3, 35);
-    Time tosca(2, 48);
-    Time temp;
-
-    cout << "Aida and Tosca:\n";
-    cout << aida << "; " << tosca << endl;
-    temp = aida + tosca;
-    cout << "Aida + Tosca: " << temp << endl;
-    temp = aida * 1.17;
-    cout << "Aida * 1.17: ";
-    cout << "10.0 * Tosca: " << 10.0 * tosca << endl;
+    n3 = n1 + n2;
+    std::cout << n3;
 
     return 0;
 }
