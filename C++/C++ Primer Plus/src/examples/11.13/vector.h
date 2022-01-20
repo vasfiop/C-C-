@@ -6,7 +6,7 @@ namespace vector
     class Vector
     {
     public:
-        enum Mode
+        enum Mode // 枚举 标识两种表示法
         {
             RECT,
             POL
@@ -15,9 +15,9 @@ namespace vector
     private:
         double x;
         double y;
-        double mag;
-        double ang;
-        Mode mode;
+        double mag; // 向量长度
+        double ang; // 向量的角度
+        Mode mode;  // 标识的方式
         void set_mag();
         void set_ang();
         void set_x();
@@ -26,8 +26,8 @@ namespace vector
     public:
         Vector();
         Vector(double n1, double n2, Mode form = RECT);
-        void reset(double n1, double n2, Mode form = RECT);
         ~Vector();
+        void reset(double n1, double n2, Mode form = RECT);
         double xval() const { return x; }
         double yval() const { return y; }
         double magval() const { return mag; }

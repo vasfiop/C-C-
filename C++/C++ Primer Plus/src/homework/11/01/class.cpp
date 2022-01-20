@@ -1,11 +1,29 @@
 #include <cmath>
-#include "vector.h"
-using namespace std;
-namespace vector
+#include "11.1.h"
+
+namespace VECTOR
 {
     const double Rad_to_deg = 45.0 / atan(1.0);
-    // 以一弧度计算角度
 
+    void Vector::set_mag()
+    {
+        mag = sqrt(x * x + y * y);
+    }
+    void Vector::set_ang()
+    {
+        if (x == 0 && y == 0)
+            ang = 0.0;
+        else
+            ang = atan2(y, x);
+    }
+    void Vector::set_x()
+    {
+        x = mag * cos(ang);
+    }
+    void Vector::set_y()
+    {
+        y = mag * sin(ang);
+    }
     Vector::Vector()
     {
         x = y = mag = ang = 0;
@@ -30,30 +48,11 @@ namespace vector
         }
         else
         {
-            cout << "Incorrect 3rd argument to Vector() -- ";
-            cout << "vector set ot 0\n";
+            std::cout << "Incorrect 3rd argument to Vector() -- ";
+            std::cout << "vector set to 0\n";
             x = y = mag = ang = 0;
             mode = RECT;
         }
-    }
-    void Vector::set_mag()
-    {
-        mag = sqrt(x * x + y * y);
-    }
-    void Vector::set_ang()
-    {
-        if (x == 0 && y == 0)
-            ang = 0;
-        else
-            ang = atan2(y, x);
-    }
-    void Vector::set_x()
-    {
-        x = mag * cos(ang);
-    }
-    void Vector::set_y()
-    {
-        y = mag * sin(ang);
     }
     void Vector::reset(double n1, double n2, Mode form)
     {
@@ -68,19 +67,20 @@ namespace vector
         else if (form == POL)
         {
             mag = n1;
-            ang = n2 / Rad_to_deg;
+            ang = n2;
             set_x();
             set_y();
         }
         else
         {
-            cout << "Incorrect 3rd argument to Vector() -- ";
-            cout << "vector set to 0 \n";
+            std::cout << "Incorrect 3rd argument to Vector() -- vector set tot 0\n";
             x = y = mag = ang = 0;
             mode = RECT;
         }
     }
-    Vector::~Vector() {}
+    Vector::~Vector()
+    {
+    }
     void Vector::polar_mode()
     {
         mode = POL;
@@ -109,14 +109,15 @@ namespace vector
     {
         return a * n;
     }
-    ostream &operator<<(ostream &os, const Vector &v)
+    std::ostream &operator<<(std::ostream &os, const Vector &v)
     {
         if (v.mode == Vector::RECT)
-            os << "(x,y) = (" << v.x << "," << v.y << ")";
+            os << "(x,y) = (" << v.x << ", " << v.y << ")";
         else if (v.mode == Vector::POL)
-            os << "(m,a) = (" << v.mag << "," << v.ang * Rad_to_deg << ")";
+            os << "(m,a) = (" << v.mag << ", " << v.ang * Rad_to_deg << ")";
         else
             os << "Vector object mode is invalid";
+
         return os;
     }
 }
