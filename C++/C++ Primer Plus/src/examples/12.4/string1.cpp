@@ -90,14 +90,19 @@ namespace string
     //     return (std::strcmp(str1.str, str2.str) == 0);
     // }
 
+    // 可以使用友元函数或者非友元函数
+    // 两个对比的参数，都是对象，所以不用担心顺序问题
+    
     bool String::operator<(const String &st)
     {
-        // TODO 尝试将上面三个友元函数变成内部函数，我觉得行。但是也得试试
+        return (std::strcmp(this->str, st.str) < 0);
     }
     bool String::operator>(const String &st)
     {
+        return (std::strcmp(this->str, st.str) > 0);
     }
     bool String::operator==(const String &st)
     {
+        return (std::strcmp(this->str, st.str) == 0);
     }
 }

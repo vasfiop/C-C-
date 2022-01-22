@@ -3,6 +3,7 @@
  * 第二个想法，使用递归进行二分法。但是我还没找到规律
  */
 #include <stdlib.h>
+#include <stdio.h>
 double findMedianSortedArrays(int *nums1, int nums1Size, int *nums2, int nums2Size)
 {
     int *allnum = (int *)malloc(sizeof(int) * (nums1Size + nums2Size));

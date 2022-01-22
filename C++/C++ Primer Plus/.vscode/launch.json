@@ -10,16 +10,6 @@
       "cwd": "${workspaceFolder}",
       "environment": [],
       "externalConsole": true,
-      "linux": {
-        "MIMode": "gdb",
-        "miDebuggerPath": "gdb",
-        "program": "${workspaceFolder}/output/main"
-      },
-      "osx": {
-        "MIMode": "lldb",
-        "miDebuggerPath": "lldb-mi",
-        "program": "${workspaceFolder}/output/main"
-      },
       "windows": {
         "MIMode": "gdb",
         "miDebuggerPath": "gdb.exe",
@@ -35,12 +25,12 @@
         ""
       ],
       "stopAtEntry": false,
-      "cwd": "d:/.file/code/C_C++/C++/C++ Primer Plus",
+      "cwd": "d:/.file/code/C_C++/C++/C++ Primer Plus/src/examples/12.9",
       "environment": [],
-      "program": "d:/.file/code/C_C++/C++/C++ Primer Plus/build/Debug/outDebug",
+      "program": "d:/.file/code/C_C++/C++/C++ Primer Plus/src/examples/12.9/build/Release/outRelease",
       "internalConsoleOptions": "openOnSessionStart",
       "MIMode": "gdb",
-      "miDebuggerPath": "gdb",
+      "miDebuggerPath": "C:/MinGw/bin/gdb.exe",
       "externalConsole": false,
       "setupCommands": [
         {

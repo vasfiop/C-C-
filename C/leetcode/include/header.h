@@ -11,3 +11,5 @@ struct ListNode *addTwoNumbers(struct ListNode *l1, struct ListNode *l2);
 int lengthOfLongestSubstring(char *s);
 // 04
 double findMedianSortedArrays(int *nums1, int nums1Size, int *nums2, int nums2Size);
+// 05
+char *longestPalindrome(char *s);
