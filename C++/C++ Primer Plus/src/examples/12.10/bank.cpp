@@ -11,21 +11,21 @@ bool newcustomer(double x);
 
 int main()
 {
-    std::srand(std::time(0));
+    srand(time(0));
 
-    std::cout << "Case Study: Bank of Heather Automatic Teller\n";
-    std::cout << "Enter maximum size of queue: ";
+    cout << "Case Study: Bank of Heather Automatic Teller\n";
+    cout << "Enter maximum size of queue: ";
     int qs;
-    std::cin >> qs;
+    cin >> qs;
     BANK::Queue line(qs);
 
-    std::cout << "Enter the number of simulation hours: ";
+    cout << "Enter the number of simulation hours: ";
     int hours;
-    std::cin >> hours;
+    cin >> hours;
     long cyclelimit = MIN_PER_HR * hours;
-    std::cout << "ENter the average number of customers per hour: ";
+    cout << "ENter the average number of customers per hour: ";
     double perhour;
-    std::cin >> perhour;
+    cin >> perhour;
 
     double min_per_cust;
     min_per_cust = MIN_PER_HR / perhour;
@@ -65,12 +65,12 @@ int main()
 
     if (customers > 0)
     {
-        std::cout << "customers accepted: " << customers << std::endl;
+        cout << "customers accepted: " << customers << endl;
         cout << " customers served: " << served << endl;
         cout << " turnaways: " << turnaways << endl;
         cout << "average queue size: ";
         cout.precision(2);
-        cout.setf(std::ios_base::fixed, std::ios_base::floatfield);
+        cout.setf(ios_base::fixed, ios_base::floatfield);
         cout << (double)sum_line / cyclelimit << endl;
         cout << " average wait time: " << (double)line_wait / served << " minutes\n";
     }

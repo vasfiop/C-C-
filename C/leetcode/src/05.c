@@ -5,15 +5,74 @@
 #include <header.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+
+void show(bool **dp, int num);
+char *test3(char *s);
+
 int check2(char *s, int left, int right);
 char *test2(char *s);
 
-char *test1(char *s);
 int checkStr(char *check, int left, int right);
+char *test1(char *s);
 
 char *longestPalindrome(char *s)
 {
-    return test2(s);
+    return test3(s);
+}
+// 动态规划法
+char *test3(char *s)
+{
+    int sSize = strlen(s);
+    if (sSize < 2)
+        return s;
+    char *returnStr = NULL;
+    bool dp[sSize][sSize];
+
+    for (int i = 0; i < sSize; i++)
+        for (int j = 0; j < sSize; j++)
+            dp[i][j] = false;
+    for (int i = 0; i < sSize; i++)
+        dp[i][i] = true;
+
+    int begine = 0;
+    int maxSize = 1;
+
+    for (int j = 1; j < sSize; j++)
+    {
+        for (int i = 0; i < j; i++)
+        {
+            if (s[i] != s[j])
+                dp[i][j] = false;
+            else
+            {
+                if ((j - i < 3))
+                    dp[i][j] = true;
+                else
+                    dp[i][j] = dp[i + 1][j - 1];
+            }
+            if (dp[i][j] && j - i + 1 > maxSize)
+            {
+                maxSize = j - i + 1;
+                begine = i;
+            }
+        }
+    }
+
+    returnStr = (char *)malloc(sizeof(char) * maxSize + 1);
+    strncpy(returnStr, s + begine, maxSize);
+    returnStr[maxSize] = '\0';
+
+    return returnStr;
+}
+void show(bool **dp, int num)
+{
+    for (int i = 0; i < num; i++)
+    {
+        for (int j = 0; j < num; j++)
+            printf("%d ", dp[i][j]);
+        putchar('\n');
+    }
 }
 // 中心扩散法
 char *test2(char *s)
