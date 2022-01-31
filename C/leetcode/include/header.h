@@ -29,13 +29,20 @@ char *longestCommonPrefix(char **strs, int strsSize);
 // 20
 bool isValid(char *s);
 // 21
-struct ListNode
-{
-    int val;
-    struct ListNode *next;
-};
 struct ListNode *mergeTwoLists(struct ListNode *list1, struct ListNode *list2);
 // 26
 int removeDuplicates(int *nums, int numsSize);
+// 27
+int removeElement(int *nums, int numsSize, int val);
+// 28
+int strStr(char *haystack, char *needle);
+// 35
+int searchInsert(int *nums, int numsSize, int target);
+// 53
+int maxSubArray(int *nums, int numsSize);
+// 58
+int lengthOfLastWord(char *s);
+// 66
+int *plusOne(int *digits, int digitsSize, int *returnSize);
 
 #endif

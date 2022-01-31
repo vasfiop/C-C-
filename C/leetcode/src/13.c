@@ -46,12 +46,12 @@ int myStest(char *s)
 
     for (int i = 0; i < sSize; i++)
     {
-        if (Roman[s[i]] < Roman[s[i + 1]])
+        if (Roman[(unsigned int)s[i]] < Roman[(unsigned int)s[i + 1]])
         {
-            returnNum += (Roman[s[i + 1]] - Roman[s[i++]]);
+            returnNum += (Roman[(unsigned int)s[i + 1]] - Roman[(unsigned int)s[i++]]);
             continue;
         }
-        returnNum += Roman[s[i]];
+        returnNum += Roman[(unsigned int)s[i]];
     }
 
     return returnNum;

@@ -15,7 +15,7 @@ bool isPalindrome(int x)
 // 将数字本身进行翻转
 bool returnNumber(int x)
 {
-    if (x < 0 || (x % 10 == 0) && x != 0)
+    if ((x < 0 || (x % 10 == 0)) && x != 0)
         return false;
     if (x >= 0 && x <= 9)
         return true;
@@ -64,7 +64,7 @@ bool changeStr(int x)
 // 自己尝试的方法(有bug 数字会溢出)
 bool myTest(int x)
 {
-    if (x < 0 || (x % 10 == 0) && x != 0)
+    if ((x < 0 || (x % 10 == 0)) && x != 0)
         return false;
     if (x >= 0 && x <= 9)
         return true;

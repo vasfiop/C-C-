@@ -1,17 +1,19 @@
 #include <stdio.h>
 #include <header.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
+
 int main()
 {
-    int l1 = {1, 2, 4};
-    int l2 = {1, 3, 4};
+    int returnSize;
+    int digits[1] = {9};
+    int *ans;
 
-    struct ListNode *list1, *list2;
-    for (int i = 0; i < 3; i++)
-    {
-        struct ListNode *new = (struct ListNode *)malloc(sizeof(struct ListNode));
-    }
+    ans = plusOne(digits, 1, &returnSize);
+    for (int i = 0; i < returnSize; i++)
+        printf("%d", ans[i]);
+
+    free(ans);
 
     return 0;
 }
