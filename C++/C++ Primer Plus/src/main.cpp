@@ -1,13 +1,22 @@
 #include <iostream>
-#include "include.h"
+class A
+{
+
+public:
+    int aa;
+};
+class B : A
+{
+public:
+    B()
+    {
+        this->aa = 10;
+    }
+};
 int main(int argc, char const *argv[])
 {
-    Number n1(1, 1);
-    Number n2(1, 1);
-    Number n3;
-
-    n3 = n1 + n2;
-    std::cout << n3;
+    B b;
+    std::cout << b.aa;
 
     return 0;
 }

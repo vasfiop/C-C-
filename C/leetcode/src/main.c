@@ -5,15 +5,10 @@
 
 int main()
 {
-    int returnSize;
-    int digits[1] = {9};
-    int *ans;
+    int num;
+    num = climbStairs(3);
 
-    ans = plusOne(digits, 1, &returnSize);
-    for (int i = 0; i < returnSize; i++)
-        printf("%d", ans[i]);
-
-    free(ans);
+    printf("%d", num);
 
     return 0;
 }

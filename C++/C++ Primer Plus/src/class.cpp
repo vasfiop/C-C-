@@ -1,25 +1,49 @@
 #include <iostream>
 #include "include.h"
-Number::Number()
+
+typedef std::ios_base::fmtflags format;
+typedef std::streamsize precis;
+
+format setFormat();
+void restore(format f, precis p);
+
+Brass::Brass(const std::string &s, long an, double bal)
 {
-    a = 0;
-    b = 0;
+    fullName = s;
+    acctNum = an;
+    balance = bal;
 }
-Number::Number(int a, int b)
+void Brass::Deposit(double amt)
 {
-    this->a = a;
-    this->a = b;
+    if (amt < 0)
+        std::cout << "Negative deposit not allowed; deposit is cancelled.\n";
+    else
+        balance += amt;
 }
-Number Number::operator+(const Number &a) const
+void Brass::Withdraw(double amt)
 {
-    return Number(this->a + a.a, this->b + a.b);
+    format initialSate = setFormat();
+    precis prec = std::cout.precision(2);
+
+    if (amt < 0)
+        std::cout << "Withdrawal amout must be positive; Withdrawal canceled.\n";
+    else if (amt <= balance)
+        balance == amt;
+    else
+        std::cout << "Withdrawal amount of $" << amt << " exceeds your balance.\nWithdrawal canceled.\n";
+    restore(initialSate, prec);
 }
-Number Number::operator+(const int a) const
+double Brass::Balance() const
 {
-    return Number(this->a + a, b);
+    return balance;
 }
-std::ostream &operator<<(std::ostream &os, Number &n)
+void Brass::ViewAcct() const
 {
-    os << "a = " << n.a << " b = " << n.b << "\n";
-    return os;
+    format initialStat = setFormat();
+    precis prec = std::cout.precision(2);
+    std::cout << "Client: " << fullName << std::endl;
+    std::cout << "Account Number: " << acctNum << std::endl;
+    std::cout << "Balance: $" << balance << std::endl;
+    restore(initialStat, prec);
 }
+// TODO

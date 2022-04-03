@@ -3,6 +3,8 @@
 
 #include <stdbool.h>
 
+int cmp(const int *a, const int *b);
+
 // 01
 int *twoSum(int *nums, int numsSize, int target, int *returnSize);
 // 02
@@ -44,5 +46,18 @@ int maxSubArray(int *nums, int numsSize);
 int lengthOfLastWord(char *s);
 // 66
 int *plusOne(int *digits, int digitsSize, int *returnSize);
+// 67
+char *addBinary(char *a, char *b);
+// 69
+int mySqrt(int x);
+// 70
+int climbStairs(int n);
+// 409
+int longestPalindrome409(char *s);
+// 455
+int findContentChildren(int *g, int gSize, int *s, int sSize);
+
+// unit
+int cmp(const int *a, const int *b);
 
 #endif

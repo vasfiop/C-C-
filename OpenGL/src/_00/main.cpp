@@ -18,9 +18,9 @@ int main()
     // 设置OpenGL坂本号
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    // 设置窗口基本信息
+    // 设置窗口基本信息 长，宽，标题，
     GLFWwindow *window = glfwCreateWindow(600, 600, "first_test", NULL, NULL);
-    if (window == NULL)
+    if (window == NULL) // 如果window指针为空 说明上一行代码执行失败
     {
         std::cout << "ERROR::CREATE::create window" << std::endl;
         glfwTerminate();

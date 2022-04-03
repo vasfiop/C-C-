@@ -86,7 +86,7 @@ int main()
 
     std::cout << "½øĞĞÁË" << (double)(end_time - start_time) / CLOCKS_PER_SEC << "Ãë" << std::endl;
     std::cout << "äÖÈ¾ÁË" << count << "´Î" << std::endl;
-    std::cout << "Ã¿ÃëÖÓäÖÈ¾ÁË:" << (double)(end_time - start_time) / CLOCKS_PER_SEC / count << "´Î" << std::endl;
+    std::cout << "Ã¿ÃëÖÓäÖÈ¾ÁË:" << count / ((double)(end_time - start_time) / CLOCKS_PER_SEC) << "´Î" << std::endl;
     system("pause");
     exit(EXIT_SUCCESS);
 }
@@ -107,7 +107,7 @@ void display(GLFWwindow *window, double currentTime)
     // ½«ÊÓÍ¼¾ØÕóÍÆÈë¶ÑÕ»
     vMat = glm::translate(glm::mat4(1), glm::vec3(-cameraX, -cameraY, -cameraZ));
     mvStack.push(vMat);
-    
+
     // ½ğ×ÖËş == Ì«Ñô
     mvStack.push(mvStack.top());
     mvStack.top() *= glm::translate(glm::mat4(1), glm::vec3(0, 0, 0)); // Ì«ÑôÎ»ÖÃ

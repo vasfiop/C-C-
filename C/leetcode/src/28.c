@@ -29,7 +29,7 @@ int answer_2(char *haystack, char *needle)
             j++;
         pi[i] = j;
     }
-// TODO 下面的循环还没看明白
+    // TODO 下面的循环还没看明白
     for (int i = 0, j = 0; i < n; i++) // 遍历haystack
     {
         while (j > 0 && haystack[i] != needle[j])
