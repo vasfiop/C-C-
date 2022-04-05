@@ -52,6 +52,20 @@ char *addBinary(char *a, char *b);
 int mySqrt(int x);
 // 70
 int climbStairs(int n);
+// 88
+void merge(int *nums1, int nums1Size, int m, int *nums2, int nums2Size, int n);
+struct TreeNode
+{
+    int val;
+    struct TreeNode *left;
+    struct TreeNode *right;
+};
+// 94
+int *inorderTraversal(struct TreeNode *root, int *returnSize);
+// 100
+bool isSameTree(struct TreeNode *p, struct TreeNode *q);
+// 101
+bool isSymmetric(struct TreeNode *root);
 // 409
 int longestPalindrome409(char *s);
 // 455
