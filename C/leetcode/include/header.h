@@ -66,6 +66,12 @@ int *inorderTraversal(struct TreeNode *root, int *returnSize);
 bool isSameTree(struct TreeNode *p, struct TreeNode *q);
 // 101
 bool isSymmetric(struct TreeNode *root);
+// 104
+int maxDepth(struct TreeNode *root);
+// 108
+struct TreeNode *sortedArrayToBST(int *nums, int numsSize);
+// 110
+bool isBalanced(struct TreeNode *root);
 // 409
 int longestPalindrome409(char *s);
 // 455
