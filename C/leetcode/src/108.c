@@ -5,6 +5,7 @@
 #include <stdlib.h>
 
 struct TreeNode *mytest108(int *nums, int numsSize);
+struct TreeNode *helper(int *nums, int left, int right);
 
 struct TreeNode *sortedArrayToBST(int *nums, int numsSize)
 {

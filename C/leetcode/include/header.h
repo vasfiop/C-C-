@@ -72,6 +72,12 @@ int maxDepth(struct TreeNode *root);
 struct TreeNode *sortedArrayToBST(int *nums, int numsSize);
 // 110
 bool isBalanced(struct TreeNode *root);
+// 112
+bool hasPathSum(struct TreeNode *root, int targetSum);
+// 118
+int **generate(int numRows, int *returnSize, int **returnColumnSizes);
+// 119
+int *getRow(int rowIndex, int *returnSize);
 // 409
 int longestPalindrome409(char *s);
 // 455

@@ -5,11 +5,13 @@
 #include <math.h>
 
 bool mytest101(struct TreeNode *root);
+bool check101(struct TreeNode *left, struct TreeNode *right);
+
 bool isSymmetric(struct TreeNode *root)
 {
     return mytest101(root);
 }
-bool check(struct TreeNode *left, struct TreeNode *right)
+bool check101(struct TreeNode *left, struct TreeNode *right)
 {
     if (left == NULL && right == NULL)
         return true;

@@ -5,10 +5,16 @@
 
 int main()
 {
-    int num;
-    num = climbStairs(3);
+    int returnSize;
+    int *ans;
 
-    printf("%d", num);
+    ans = getRow(3, &returnSize);
+
+    for (int i = 0; i < returnSize; i++)
+    {
+        printf("%d", ans[i]);
+    }
+    printf("\n");
 
     return 0;
 }

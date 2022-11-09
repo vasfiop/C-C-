@@ -6,6 +6,7 @@
 
 int mytest104(struct TreeNode *root);
 int ans1(struct TreeNode *root);
+int check104(struct TreeNode *root, int n);
 
 int maxDepth(struct TreeNode *root)
 {
@@ -26,7 +27,7 @@ int mytest104(struct TreeNode *root)
     int n = 0;
     return check(root, n);
 }
-int check(struct TreeNode *root, int n)
+int check104(struct TreeNode *root, int n)
 {
     if (root == NULL)
         return n;

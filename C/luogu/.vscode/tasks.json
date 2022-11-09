@@ -1,6 +1,7 @@
 {
     "version": "2.0.0",
-    "tasks": [{
+    "tasks": [
+        {
             "label": "build",
             "type": "shell",
             "group": {
@@ -11,7 +12,21 @@
                 "command": "powershell",
                 "args": [
                     "-c",
-                    "make run dir=119"
+                    "mingw32-make"
+                ]
+            },
+            "linux": {
+                "command": "bash",
+                "args": [
+                    "-c",
+                    "make"
+                ]
+            },
+            "osx": {
+                "command": "bash",
+                "args": [
+                    "-c",
+                    "make"
                 ]
             }
         },
